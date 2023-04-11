@@ -1,0 +1,17 @@
+.open-sidebar {
+    width: 25%;
+    opacity: 1;
+    margin-right: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.closed-sidebar {
+    width: 0;
+    opacity: 0;
+    right: -25%;
+    top: 0;
+    bottom: 0;
+}

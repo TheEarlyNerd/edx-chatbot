@@ -1,10 +1,11 @@
 import "./App.css";
-import FloatingButton from "./components/FloatingButton";
+import Xpert from "./widgets/Xpert";
+
 
 function App() {
   return (
     <div className="App">
-      <FloatingButton />
+      <Xpert />
     </div>
   );
 }

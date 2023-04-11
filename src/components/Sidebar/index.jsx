@@ -11,7 +11,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     <div
       className={`flex flex-col justify-between fixed top-0 ${
         isOpen ? "open-sidebar" : "closed-sidebar"
-      } h-screen bg-gray-50 border-gray-400 border-l transition-all duration-500`}
+      } h-screen bg-gray-50 border-gray-400 border-l transition-all ease duration-800`}
     >
       <div className="flex flex-col">
         <button

@@ -1,10 +1,10 @@
 import "./App.css";
-import ToggleXpert from "./components/ToggleXpert";
+import Xpert from "./widgets/Xpert";
 
 function App() {
   return (
     <div className="App">
-      <ToggleXpert />
+      <Xpert />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../Sidebar";
 
-const FloatingButton = () => {
+const ToggleXpert = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -21,4 +21,4 @@ const FloatingButton = () => {
   );
 };
 
-export default FloatingButton;
+export default ToggleXpert;

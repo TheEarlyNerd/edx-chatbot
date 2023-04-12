@@ -1,7 +1,6 @@
 import "./App.css";
 import Xpert from "./widgets/Xpert";
 
-
 function App() {
   return (
     <div className="App">

@@ -1,4 +1,5 @@
 import React from "react";
+import ChatBox from "../ChatBox";
 import "./Sidebar.css";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -32,9 +33,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </p>
         </div>
       </div>
-
-      <div className="p-2">
-        <textarea
+      <ChatBox />
+      <div className="p-2 mt-auto">
+        <input
+          textarea
           type="text"
           placeholder="Type your question..."
           className="w-full border border-gray-300 rounded-md p-4 focus:outline-none focus:border-blue-500"

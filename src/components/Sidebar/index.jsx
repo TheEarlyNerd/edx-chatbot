@@ -1,15 +1,16 @@
 import React from "react";
 import ChatBox from "../ChatBox";
+import { Send } from "react-feather";
 import "./Sidebar.css";
 import { ReactComponent as NewXeySvg } from "../../assets/new_xey.svg";
-
 
 const Sidebar = ({
   state,
   handleUpdateCurrentMessage,
-  handleSendMessage,
+  handleSubmitMessage,
   isOpen,
   setIsOpen,
+  clearState,
 }) => {
   const handleClick = () => {
     setIsOpen(false);
@@ -17,7 +18,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col justify-between fixed top-0 ${
+      className={`sidebar flex flex-col justify-between fixed top-0 ${
         isOpen ? "open-sidebar" : "closed-sidebar"
       } h-screen bg-gray-50 border-gray-400 border-l transition-all ease duration-800`}
     >
@@ -35,25 +36,37 @@ const Sidebar = ({
           </svg>
         </button>
         <div className="p-4">
-          <h1 className="text-xl font-bold mb-4 inline-flex">Hi, I'm Xpert! <NewXeySvg width="20" className="pl-1" /></h1>
+          <h1 className="text-xl font-bold mb-4 inline-flex">
+            Hi, I'm Xpert! <NewXeySvg width="20" className="pl-1" />
+          </h1>
           <p className="px-4">
-            Stuck on a concept? Need more clarification on a complicated topic? Let's chat!
+            Stuck on a concept? Need more clarification on a complicated topic?
+            Let's chat!
           </p>
         </div>
       </div>
-      <span className='seperator' />
+      <span className="seperator" />
       <ChatBox messageList={state.messageList} />
-      <form className="p-2 mt-auto" onSubmit={handleSendMessage}>
+      <form className="flex p-2 mt-auto" onSubmit={handleSubmitMessage}>
         <input
-          textarea
           type="text"
           value={state.currentMessage}
           onChange={handleUpdateCurrentMessage}
           placeholder="Type your question..."
           className="w-full border border-gray-300 rounded-md p-4 focus:outline-none focus:border-blue-500"
         />
-        <button type="submit">Send</button>
+        <button className="text-blue-900 mt-2 mb-1 mx-2" type="submit">
+          <Send size="22" className="ml-1" />
+        </button>
       </form>
+      <div className="flex justify-start">
+        <button
+          className="rounded-full bg-blue-100 text-blue-900 px-3 mx-2 mb-2"
+          onClick={clearState}
+        >
+          Clear
+        </button>
+      </div>
     </div>
   );
 };

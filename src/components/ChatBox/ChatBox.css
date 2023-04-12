@@ -7,3 +7,10 @@
   opacity: 1;
   margin-right: 0;
 }
+
+.scroller::after {
+  content: ""; /* Add an empty content area after the chat messages */
+  display: block;
+  height: 0;
+  clear: both;
+}

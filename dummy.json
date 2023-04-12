@@ -16,7 +16,7 @@
     "messages": [
       {
         "role": "assistant",
-        "message": "How can I help you today?"
+        "content": "How can I help you today?"
       }
     ]
   }

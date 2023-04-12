@@ -6,8 +6,8 @@ import "./ChatBox.css";
 const ChatBox = ({ messageList }) => {
   return (
     <div className="scroller container d-flex justify-content-center">
-      {messageList.map(({ role, currentMessage, timestamp }) => (
-        <Message variant={role} message={currentMessage} timestamp={timestamp} />
+      {messageList.map(({ role, content, timestamp }) => (
+        <Message key={timestamp.toString()} variant={role} message={content} timestamp={timestamp} />
       ))}
     </div>
   );

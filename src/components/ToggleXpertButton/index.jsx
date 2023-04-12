@@ -10,11 +10,10 @@ const ToggleXpert = ({ isOpen, setIsOpen }) => {
   if (isOpen) {
     return (
       <button
-        className={`fixed flex flex-row bottom-4 sidebar-open bg-white pl-5 py-2 rounded-full border shadow transition-all ease duration-800`}
+        className={`fixed flex flex-row bottom-4 sidebar-open bg-white p-2 rounded-full shadow transition-all ease duration-800`}
         onClick={handleClick}
       >
-        <p className="text-black">Hide</p>
-        <ChevronRight width="50" color="black" />
+        <ChevronRight size="20" color="black" />
       </button>
     );
   }

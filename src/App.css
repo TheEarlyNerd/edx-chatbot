@@ -1,5 +1,5 @@
 .App {
-  background: url(../assets/screenshots/course_screenshot.png);
+  background: url(../public/screenshots/course_screenshot.png);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;

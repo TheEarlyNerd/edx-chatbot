@@ -4,7 +4,13 @@ import "./Sidebar.css";
 import { ReactComponent as NewXeySvg } from "../../assets/new_xey.svg";
 
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({
+  state,
+  handleUpdateCurrentMessage,
+  handleSendMessage,
+  isOpen,
+  setIsOpen,
+}) => {
   const handleClick = () => {
     setIsOpen(false);
   };
@@ -36,15 +42,18 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         </div>
       </div>
       <span className='seperator' />
-      <ChatBox />
-      <div className="p-2 mt-auto">
+      <ChatBox messageList={state.messageList} />
+      <form className="p-2 mt-auto" onSubmit={handleSendMessage}>
         <input
           textarea
           type="text"
+          value={state.currentMessage}
+          onChange={handleUpdateCurrentMessage}
           placeholder="Type your question..."
           className="w-full border border-gray-300 rounded-md p-4 focus:outline-none focus:border-blue-500"
         />
-      </div>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };

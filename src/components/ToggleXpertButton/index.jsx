@@ -19,11 +19,13 @@ const ToggleXpert = ({ isOpen, setIsOpen }) => {
   }
 
   return (
-    <button
-      className={`fixed bottom-4 sidebar-closed px-4 py-2 transition-all ease duration-800`}
-      onClick={handleClick}
-    >
-      <NewXeySvg width="58" />
+    <button className="fixed justify-end bottom-4 sidebar-closed transition-all ease duration-800" onClick={handleClick}>
+      <div className="open-negative-margin absolute bottom-16 px-4 py-2 text-white border border-white">
+        <span>Have a question?</span>
+      </div>
+      <div className={`px-4 py-2`} >
+        <NewXeySvg width="58" />
+      </div>
     </button>
   );
 };

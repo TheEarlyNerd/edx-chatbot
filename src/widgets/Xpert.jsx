@@ -102,10 +102,6 @@ function Xpert() {
     dispatch({ type: "UPDATE_CURRENT_MESSAGE", payload: event.target.value });
   };
 
-  const dispatchMessageEvent = async () => {
-    
-  };
-
   const handleSubmitMessage = (event) => {
     event.preventDefault();
     if (state.currentMessage) {

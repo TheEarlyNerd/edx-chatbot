@@ -3,26 +3,45 @@ import ToggleXpert from "../components/ToggleXpertButton";
 import Sidebar from "../components/Sidebar";
 
 const initialState = {
-  message: "",
-  messages: [],
+  currentMessage: "",
+  messageList: [
+    {
+      user: "xpert",
+      message: "Hello, how can I help you?",
+      timestamp: new Date(),
+    },
+  ],
 };
+
+function parseTimestamp(timestamp) {
+  return new Date(
+    timestamp
+  );
+}
 
 function reducer(state, action) {
   switch (action.type) {
-    case "SET_MESSAGE":
-      return { ...state, message: action.payload };
-      
-    case "ADD_MESSAGE":
-      const newMessages = [...state.messages, action.payload];
+
+    case "UPDATE_CURRENT_MESSAGE":
+      return { ...state, currentMessage: action.payload };
+
+    case "SEND_MESSAGE":
+      const newMessages = [...state.messageList, action.payload];
       localStorage.setItem("messages", JSON.stringify(newMessages));
-      return { ...state, messages: newMessages, message: "" };
+      return { ...state, messageList: newMessages, currentMessage: "" };
 
     case "LOAD_MESSAGES":
       const storedMessages = localStorage.getItem("messages");
-      return {
-        ...state,
-        messages: storedMessages ? JSON.parse(storedMessages) : [],
-      };
+      const parsedMessages = storedMessages
+        ? JSON.parse(storedMessages).map((message) => {
+            const parsedTimestamp = parseTimestamp(message.timestamp);
+            return {
+              ...message,
+              timestamp: parsedTimestamp
+            };
+          })
+        : [];
+      return { ...state, messageList: parsedMessages };
 
     default:
       return state;
@@ -37,21 +56,42 @@ function Xpert() {
     dispatch({ type: "LOAD_MESSAGES" });
   }, []);
 
-  const handleMessageChange = (event) => {
-    dispatch({ type: "SET_MESSAGE", payload: event.target.value });
+  const handleUpdateCurrentMessage = (event) => {
+    dispatch({ type: "UPDATE_CURRENT_MESSAGE", payload: event.target.value });
   };
 
-  const handleSendMessage = () => {
-    if (state.message) {
-      dispatch({ type: "ADD_MESSAGE", payload: state.message });
+  const handleSendMessage = (event) => {
+    event.preventDefault();
+    if (state.currentMessage) {
+      const timestamp = new Date();
+
+      dispatch({
+        type: "SEND_MESSAGE",
+        payload: {
+          role: 'user',
+          currentMessage: state.currentMessage,
+          timestamp,
+        },
+      });
+
+      
     }
   };
 
+  function clearLocalStorage() {
+    localStorage.clear();
+  }
+
+  console.log(state)
+
+  // clearLocalStorage()
+
   return (
-    <div className="">
+    <div>
       <ToggleXpert isOpen={sidebarIsOpen} setIsOpen={setSidebarIsOpen} />
       <Sidebar
-        handleMessageChange={handleMessageChange}
+        state={state}
+        handleUpdateCurrentMessage={handleUpdateCurrentMessage}
         handleSendMessage={handleSendMessage}
         isOpen={sidebarIsOpen}
         setIsOpen={setSidebarIsOpen}

@@ -2,7 +2,13 @@ import React from "react";
 import ChatBox from "../ChatBox";
 import "./Sidebar.css";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({
+  state,
+  handleUpdateCurrentMessage,
+  handleSendMessage,
+  isOpen,
+  setIsOpen,
+}) => {
   const handleClick = () => {
     setIsOpen(false);
   };
@@ -33,15 +39,18 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </p>
         </div>
       </div>
-      <ChatBox />
-      <div className="p-2 mt-auto">
+      <ChatBox messageList={state.messageList} />
+      <form className="p-2 mt-auto" onSubmit={handleSendMessage}>
         <input
           textarea
           type="text"
+          value={state.currentMessage}
+          onChange={handleUpdateCurrentMessage}
           placeholder="Type your question..."
           className="w-full border border-gray-300 rounded-md p-4 focus:outline-none focus:border-blue-500"
         />
-      </div>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };

@@ -1,8 +1,26 @@
-.user-message {
-  text-align: center;
+.msg {
+  width: fit-content;
+  max-width: 70%;
+  display: flex;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  text-align: left;
 }
 
-.xpert-message {
-  text-align: center;
+.msg.user {
+  background:#EBEBEB;
+  margin-left: auto;
 }
 
+.msg.xpert {
+  background:#0A3055;
+  color: white;
+}
+
+.time {
+  display: flex;
+  font-size: 10px;
+  padding-left: 10px;
+  align-items: flex-end;
+}

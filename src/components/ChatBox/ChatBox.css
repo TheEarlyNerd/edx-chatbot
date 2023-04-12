@@ -1,0 +1,15 @@
+.seperator {
+  padding: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 11px 15px -8px #adadad;
+  position: sticky;
+}
+
+.scroller {
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  width: 100%;
+  opacity: 1;
+  margin-right: 0;
+}

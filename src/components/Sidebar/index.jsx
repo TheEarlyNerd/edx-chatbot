@@ -1,4 +1,5 @@
 import React from "react";
+import ChatBox from "../ChatBox";
 import "./Sidebar.css";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -8,7 +9,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <div
-      className={`fixed top-0 ${
+      className={`fixed d-flex top-0 ${
         isOpen ? "open-sidebar" : "closed-sidebar"
       } h-screen bg-gray-50 border-gray-400 border-l transition-all duration-500 flex flex-col flex-between`}
     >
@@ -31,7 +32,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           explain.
         </p>
       </div>
-      <div className="p-2">
+      <ChatBox />
+      <div className="p-2 mt-auto">
         <input
           type="text"
           placeholder="Type your question..."

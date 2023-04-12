@@ -1,10 +1,10 @@
 import "./App.css";
-import FloatingButton from "./components/FloatingButton";
+import ToggleXpert from "./components/ToggleXpert";
 
 function App() {
   return (
     <div className="App">
-      <FloatingButton />
+      <ToggleXpert />
     </div>
   );
 }

@@ -3,9 +3,9 @@ import Message from "../Message";
 import "./ChatBox.css";
 
 // container for all of the messages
-const ChatBox = ({ messageList }) => {
+const ChatBox = ({ messageList, chatboxContainerRef }) => {
   return (
-    <div className="scroller container d-flex justify-content-center">
+    <div ref={chatboxContainerRef} className="scroller container d-flex justify-content-center">
       {messageList.map(({ role, content, timestamp }) => (
         <Message key={timestamp.toString()} variant={role} message={content} timestamp={timestamp} />
       ))}

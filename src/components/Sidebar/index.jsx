@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import ChatBox from "../ChatBox";
 import { Send } from "react-feather";
 import "./Sidebar.css";
@@ -12,6 +12,38 @@ const Sidebar = ({
   setIsOpen,
   clearState,
 }) => {
+  const chatboxContainerRef = useRef(null);
+
+  useEffect(() => {
+    const messageContainer = chatboxContainerRef.current;
+    const scrollHeight = messageContainer.scrollHeight;
+    const clientHeight = messageContainer.clientHeight;
+    const maxScrollTop = scrollHeight - clientHeight;
+    const duration = 200;
+
+    if (maxScrollTop > 0) {
+      const startTime = Date.now();
+      const endTime = startTime + duration;
+
+      const scroll = () => {
+        const currentTime = Date.now();
+        const timeFraction = (currentTime - startTime) / duration;
+        const scrollTop = maxScrollTop * timeFraction;
+
+        messageContainer.scrollTo({
+          top: scrollTop,
+          behavior: "smooth",
+        });
+
+        if (currentTime < endTime) {
+          requestAnimationFrame(scroll);
+        }
+      };
+
+      requestAnimationFrame(scroll);
+    }
+  }, [state.messageList]);
+
   const handleClick = () => {
     setIsOpen(false);
   };
@@ -46,7 +78,10 @@ const Sidebar = ({
         </div>
       </div>
       <span className="seperator" />
-      <ChatBox messageList={state.messageList} />
+      <ChatBox
+        chatboxContainerRef={chatboxContainerRef}
+        messageList={state.messageList}
+      />
       <form className="flex p-2 mt-auto" onSubmit={handleSubmitMessage}>
         <input
           type="text"

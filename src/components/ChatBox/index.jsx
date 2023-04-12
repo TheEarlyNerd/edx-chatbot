@@ -9,7 +9,6 @@ const ChatBox = () => {
   Object.entries(messageResponses).map(([key, value]) => console.log(key + ': ' + value));
   return (
     <div class="scroller container d-flex justify-content-center">
-      <div className='seperator'></div>
       {Object.entries(messageResponses).map(([key, value]) => {
         return (
           <>

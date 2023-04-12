@@ -1,6 +1,8 @@
 import React from "react";
 import ChatBox from "../ChatBox";
 import "./Sidebar.css";
+import { ReactComponent as NewXeySvg } from "../../assets/new_xey.svg";
+
 
 const Sidebar = ({
   state,
@@ -33,12 +35,13 @@ const Sidebar = ({
           </svg>
         </button>
         <div className="p-4">
-          <h1 className="text-xl font-bold mb-4">Hi! I'm Xey 😊</h1>
+          <h1 className="text-xl font-bold mb-4 inline-flex">Hi, I'm Xpert! <NewXeySvg width="20" className="pl-1" /></h1>
           <p className="px-4">
-            Stuck on a concept? Need more clarification on a complicated topic?
+            Stuck on a concept? Need more clarification on a complicated topic? Let's chat!
           </p>
         </div>
       </div>
+      <span className='seperator' />
       <ChatBox messageList={state.messageList} />
       <form className="p-2 mt-auto" onSubmit={handleSendMessage}>
         <input

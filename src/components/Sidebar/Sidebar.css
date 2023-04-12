@@ -24,10 +24,5 @@
     background: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.35), transparent);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent);
     opacity: 0.2;
-/* 
-    height: 20px;
-    position: absolute;
-    background-image: radial-gradient(farthest-side at 50% 0%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
-    display: none; */
   }
   

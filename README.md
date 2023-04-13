@@ -1,4 +1,4 @@
-# Xpert an edX AI Tutor
+# Xpert, an edX AI Tutor
 
 This is a hackathon project, so I would warmly direct you to any other of my pinned projects for a sense of my standards for quality. The project was really fun though so I describe it below.
 
